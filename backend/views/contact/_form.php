@@ -8,6 +8,8 @@ use simple\contacts\backend\assets\ContactAsset;
 use simple\contacts\backend\models\PhoneForm;
 use simple\contacts\backend\models\EmailForm;
 
+use dkhlystov\widgets\AddressInput;
+
 ?>
 <?php $form = ActiveForm::begin([
 	'layout' => 'horizontal',
@@ -20,7 +22,14 @@ use simple\contacts\backend\models\EmailForm;
 
 	<?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
 
-	<?= $form->field($model, 'address') ?>
+	<?= $form->field($model, 'address')->widget(AddressInput::className(), [
+		'latitudeAttribute' => 'latitude',
+		'longitudeAttribute' => 'longitude',
+		'searchLabel' => Yii::t('contacts', 'Find on map'),
+		'removeLabel' => Yii::t('contacts', 'Remove marker'),
+		'type' => AddressInput::GOOGLE,
+		'key' => 'AIzaSyAXx4Uc92vgK6-fQzT4YZInixlyHw9Hg5g',
+	]) ?>
 
 	<?= $form->field($model, 'phones')->widget('dkhlystov\grid\ArrayInput', [
 		'itemClass' => PhoneForm::className(),

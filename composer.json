@@ -12,7 +12,8 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "dkhlystov/yii2-grid": "*"
+        "dkhlystov/yii2-grid": "*",
+        "dkhlystov/yii2-address": "*"
     },
     "autoload": {
         "psr-4": {
