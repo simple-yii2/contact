@@ -3,7 +3,6 @@ create table if not exists `Contact`
 	`id` int(10) not null auto_increment,
 	`active` tinyint(1) default 1,
 	`title` varchar(100) default null,
-	`description` text default null,
 	`address` varchar(200) default null,
 	`latitude` real default null,
 	`longitude` real default null,

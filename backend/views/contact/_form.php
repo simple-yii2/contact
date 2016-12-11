@@ -1,7 +1,6 @@
 <?php
 
 use yii\bootstrap\ActiveForm;
-use yii\bootstrap\Tabs;
 use yii\helpers\Html;
 
 use simple\contacts\backend\assets\ContactAsset;
@@ -9,6 +8,36 @@ use simple\contacts\backend\models\PhoneForm;
 use simple\contacts\backend\models\EmailForm;
 
 use dkhlystov\widgets\AddressInput;
+
+$config = [
+	'latitudeAttribute' => 'latitude',
+	'longitudeAttribute' => 'longitude',
+	'searchLabel' => Yii::t('contacts', 'Find on map'),
+	'removeLabel' => Yii::t('contacts', 'Remove marker'),
+];
+
+foreach (Yii::$app->modules as $v) {
+	if (is_string($v)) {
+		$name = $v;
+	} elseif (is_array($v)) {
+		$name = $v['class'];
+	} else {
+		$name = $v::className();
+	}
+	if ($name == 'simple\contacts\frontend\Module') {
+		if (is_array($v)) {
+			if (isset($v['mapType']))
+				$config['type'] = $v['mapType'];
+			if (isset($v['mapKey']))
+				$config['key'] = $v['mapKey'];
+		} elseif (!is_string($v)) {
+			$config['type'] = $v->mapType;
+			$config['key'] = $v->key;
+		}
+		break;
+	}
+}
+
 
 ?>
 <?php $form = ActiveForm::begin([
@@ -20,16 +49,7 @@ use dkhlystov\widgets\AddressInput;
 
 	<?= $form->field($model, 'title') ?>
 
-	<?= $form->field($model, 'description')->textarea(['rows' => 3]) ?>
-
-	<?= $form->field($model, 'address')->widget(AddressInput::className(), [
-		'latitudeAttribute' => 'latitude',
-		'longitudeAttribute' => 'longitude',
-		'searchLabel' => Yii::t('contacts', 'Find on map'),
-		'removeLabel' => Yii::t('contacts', 'Remove marker'),
-		'type' => AddressInput::GOOGLE,
-		'key' => 'AIzaSyAXx4Uc92vgK6-fQzT4YZInixlyHw9Hg5g',
-	]) ?>
+	<?= $form->field($model, 'address')->widget(AddressInput::className(), $config) ?>
 
 	<?= $form->field($model, 'phones')->widget('dkhlystov\grid\ArrayInput', [
 		'itemClass' => PhoneForm::className(),

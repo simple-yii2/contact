@@ -5,8 +5,6 @@ namespace simple\contacts\backend\models;
 use Yii;
 use yii\base\Model;
 
-use simple\contacts\common\models\Group;
-
 /**
  * Contact editing form
  */
@@ -22,11 +20,6 @@ class ContactForm extends Model
 	 * @var string Title
 	 */
 	public $title;
-
-	/**
-	 * @var string Description
-	 */
-	public $description;
 
 	/**
 	 * @var string Address
@@ -69,7 +62,6 @@ class ContactForm extends Model
 		//attributes
 		$this->active = $object->active == 0 ? '0' : '1';
 		$this->title = $object->title;
-		$this->description = $object->description;
 		$this->address = $object->address;
 		$this->latitude = $object->latitude;
 		$this->longitude = $object->longitude;
@@ -96,7 +88,6 @@ class ContactForm extends Model
 		return [
 			'active' => Yii::t('contacts', 'Active'),
 			'title' => Yii::t('contacts', 'Title'),
-			'description' => Yii::t('contacts', 'Description'),
 			'address' => Yii::t('contacts', 'Address'),
 			'phones' => Yii::t('contacts', 'Phones'),
 			'emails' => Yii::t('contacts', 'E-mails'),
@@ -111,7 +102,6 @@ class ContactForm extends Model
 		return [
 			['active', 'boolean'],
 			['title', 'string', 'max' => 100],
-			['description', 'string', 'max' => 500],
 			['address', 'string', 'max' => 200],
 			['latitude', 'double', 'min' => -90, 'max' => 90],
 			['longitude', 'double', 'min' => -180, 'max' => 180],
@@ -215,7 +205,6 @@ class ContactForm extends Model
 
 		$object->active = $this->active == 1;
 		$object->title = $this->title;
-		$object->description = $this->description;
 		$object->address = $this->address;
 		$object->latitude = empty($this->latitude) ? null : (float) $this->latitude;
 		$object->longitude = empty($this->longitude) ? null : (float) $this->longitude;
