@@ -1,6 +1,6 @@
 {
-    "name": "simple-yii2/contacts",
-    "description": "Contacts module for Yii 2 framework",
+    "name": "simple-yii2/contact",
+    "description": "Contact module for Yii 2 framework",
     "type": "yii2-module",
     "keywords": ["yii2","module","contacts"],
     "license": "BSD-3-Clause",
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "simple\\contacts\\": ""
+            "cms\\contact\\": ""
         }
     }
 }
