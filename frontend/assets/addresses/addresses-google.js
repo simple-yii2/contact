@@ -21,7 +21,9 @@ function initContactAddressMap()
 
 	var map = new google.maps.Map($map[0], {
 		'center': addresses[0],
-		'zoom': 16
+		'zoom': 16,
+		'mapTypeControl': false,
+		'streetViewControl': false
 	});
 
 	$.each(addresses, function(i, v) {
