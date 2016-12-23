@@ -3,8 +3,9 @@
 use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 use yii\widgets\ListView;
-use simple\contacts\frontend\assets\AddressesGoogleAsset;
-use simple\contacts\frontend\assets\AddressesYandexAsset;
+
+use cms\contact\frontend\assets\AddressesGoogleAsset;
+use cms\contact\frontend\assets\AddressesYandexAsset;
 
 $module = Yii::$app->controller->module;
 if ($module->mapType === $module::GOOGLE) {

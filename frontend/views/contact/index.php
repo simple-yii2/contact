@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$title = Yii::t('contacts', 'Contacts');
+$title = Yii::t('contact', 'Contacts');
 
 $this->title = $title . ' | ' . Yii::$app->name;
 

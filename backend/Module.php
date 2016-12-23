@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\backend;
+namespace cms\contact\backend;
 
 use Yii;
 
@@ -37,10 +37,10 @@ class Module extends \yii\base\Module {
 
 		//rbac
 		$auth = Yii::$app->getAuthManager();
-		if ($auth->getRole('Contacts') === null) {
-			//contacts role
-			$contacts = $auth->createRole('Contacts');
-			$auth->add($contacts);
+		if ($auth->getRole('Contact') === null) {
+			//role
+			$role = $auth->createRole('Contact');
+			$auth->add($role);
 		}
 	}
 
@@ -50,8 +50,8 @@ class Module extends \yii\base\Module {
 	 */
 	protected static function addTranslation()
 	{
-		if (!isset(Yii::$app->i18n->translations['contacts'])) {
-			Yii::$app->i18n->translations['contacts'] = [
+		if (!isset(Yii::$app->i18n->translations['contact'])) {
+			Yii::$app->i18n->translations['contact'] = [
 				'class' => 'yii\i18n\PhpMessageSource',
 				'sourceLanguage' => 'en-US',
 				'basePath' => dirname(__DIR__) . '/messages',
@@ -70,7 +70,7 @@ class Module extends \yii\base\Module {
 
 		if (Yii::$app->user->can('Contacts')) {
 			return [
-				['label' => Yii::t('contacts', 'Contacts'), 'url' => ["$base/contacts/contact/index"]],
+				['label' => Yii::t('contact', 'Contacts'), 'url' => ["$base/contact/contact/index"]],
 			];
 		}
 		

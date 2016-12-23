@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\common\models;
+namespace cms\contact\common\models;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -27,16 +27,6 @@ class Contact extends ActiveRecord
 		parent::init();
 
 		$this->active = true;
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels()
-	{
-		return [
-			'title' => Yii::t('contacts', 'Title'),
-		];
 	}
 
 	/**

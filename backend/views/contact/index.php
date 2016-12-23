@@ -3,7 +3,7 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$title = Yii::t('contacts', 'Contacts');
+$title = Yii::t('contact', 'Contacts');
 
 $this->title = $title . ' | ' . Yii::$app->name;
 
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'] = [
 <h1><?= Html::encode($title) ?></h1>
 
 <div class="btn-toolbar" role="toolbar">
-	<?= Html::a(Yii::t('contacts', 'Create'), ['create'], ['class' => 'btn btn-primary']) ?>
+	<?= Html::a(Yii::t('contact', 'Create'), ['create'], ['class' => 'btn btn-primary']) ?>
 </div>
 
 <?= GridView::widget([

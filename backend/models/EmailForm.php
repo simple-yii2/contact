@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\backend\models;
+namespace cms\contact\backend\models;
 
 use Yii;
 use yii\base\Model;
@@ -27,8 +27,8 @@ class EmailForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'email' => Yii::t('contacts', 'E-mail'),
-			'description' => Yii::t('contacts', 'Description'),
+			'email' => Yii::t('contact', 'E-mail'),
+			'description' => Yii::t('contact', 'Description'),
 		];
 	}
 

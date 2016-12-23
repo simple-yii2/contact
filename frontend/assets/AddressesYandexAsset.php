@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\frontend\assets;
+namespace cms\contact\frontend\assets;
 
 use yii\web\AssetBundle;
 

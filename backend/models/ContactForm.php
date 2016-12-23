@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\backend\models;
+namespace cms\contact\backend\models;
 
 use Yii;
 use yii\base\Model;
@@ -47,15 +47,15 @@ class ContactForm extends Model
 	private $_emails = [];
 
 	/**
-	 * @var \simple\contacts\common\models\Contact
+	 * @var cms\contact\common\models\Contact
 	 */
 	private $_object;
 
 	/**
 	 * @inheritdoc
-	 * @param \simple\contacts\common\models\Contact $object 
+	 * @param cms\contact\common\models\Contact $object 
 	 */
-	public function __construct(\simple\contacts\common\models\Contact $object, $config = [])
+	public function __construct(\cms\contact\common\models\Contact $object, $config = [])
 	{
 		$this->_object = $object;
 
@@ -86,11 +86,11 @@ class ContactForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'active' => Yii::t('contacts', 'Active'),
-			'title' => Yii::t('contacts', 'Title'),
-			'address' => Yii::t('contacts', 'Address'),
-			'phones' => Yii::t('contacts', 'Phones'),
-			'emails' => Yii::t('contacts', 'E-mails'),
+			'active' => Yii::t('contact', 'Active'),
+			'title' => Yii::t('contact', 'Title'),
+			'address' => Yii::t('contact', 'Address'),
+			'phones' => Yii::t('contact', 'Phones'),
+			'emails' => Yii::t('contact', 'E-mails'),
 		];
 	}
 

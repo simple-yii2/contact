@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\backend\controllers;
+namespace cms\contact\backend\controllers;
 
 use Yii;
 // use yii\data\ActiveDataProvider;
@@ -8,13 +8,10 @@ use yii\filters\AccessControl;
 // use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
-use simple\contacts\backend\models\ContactForm;
-use simple\contacts\backend\models\ContactSearch;
-use simple\contacts\common\models\Contact;
+use cms\contact\backend\models\ContactForm;
+use cms\contact\backend\models\ContactSearch;
+use cms\contact\common\models\Contact;
 
-/**
- * Contacts manage controller
- */
 class ContactController extends Controller
 {
 
@@ -28,7 +25,7 @@ class ContactController extends Controller
 			'access' => [
 				'class' => AccessControl::className(),
 				'rules' => [
-					['allow' => true, 'roles' => ['Contacts']],
+					['allow' => true, 'roles' => ['Contact']],
 				],
 			],
 		];
@@ -57,7 +54,7 @@ class ContactController extends Controller
 		$model = new ContactForm(new Contact);
 
 		if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
-			Yii::$app->session->setFlash('success', Yii::t('contacts', 'Changes saved successfully.'));
+			Yii::$app->session->setFlash('success', Yii::t('contact', 'Changes saved successfully.'));
 			return $this->redirect(['index']);
 		}
 
@@ -75,12 +72,12 @@ class ContactController extends Controller
 	{
 		$object = Contact::findOne($id);
 		if ($object === null)
-			throw new BadRequestHttpException(Yii::t('contacts', 'Contact not found.'));
+			throw new BadRequestHttpException(Yii::t('contact', 'Contact not found.'));
 
 		$model = new ContactForm($object);
 
 		if ($model->load(Yii::$app->getRequest()->post()) && $model->save()) {
-			Yii::$app->session->setFlash('success', Yii::t('contacts', 'Changes saved successfully.'));
+			Yii::$app->session->setFlash('success', Yii::t('contact', 'Changes saved successfully.'));
 			return $this->redirect(['index']);
 		}
 
@@ -98,10 +95,10 @@ class ContactController extends Controller
 	{
 		$object = Contact::findOne($id);
 		if ($object === null)
-			throw new BadRequestHttpException(Yii::t('contacts', 'Contact not found.'));
+			throw new BadRequestHttpException(Yii::t('contact', 'Contact not found.'));
 
 		if ($object->delete()) {
-			Yii::$app->session->setFlash('success', Yii::t('contacts', 'Contact deleted successfully.'));
+			Yii::$app->session->setFlash('success', Yii::t('contact', 'Contact deleted successfully.'));
 		}
 
 		return $this->redirect(['index']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\frontend\models;
+namespace cms\contact\frontend\models;
 
 use Yii;
 use yii\base\Model;
@@ -42,11 +42,11 @@ class ContactForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'name' => Yii::t('contacts', 'Name'),
-			'phone' => Yii::t('contacts', 'Phone'),
-			'email' => Yii::t('contacts', 'E-mail'),
-			'message' => Yii::t('contacts', 'Message'),
-			'verificationCode' => Yii::t('contacts', 'Verification code'),
+			'name' => Yii::t('contact', 'Name'),
+			'phone' => Yii::t('contact', 'Phone'),
+			'email' => Yii::t('contact', 'E-mail'),
+			'message' => Yii::t('contact', 'Message'),
+			'verificationCode' => Yii::t('contact', 'Verification code'),
 		];
 	}
 
@@ -69,7 +69,7 @@ class ContactForm extends Model
 
 		$message = Yii::$app->mailer->compose()
 			->setTo($mailTo)
-			->setSubject(Yii::t('contacts', 'New message'))
+			->setSubject(Yii::t('contact', 'New message'))
 			->setHtmlBody(Yii::$app->controller->renderPartial('mail-contact', ['model' => $this]));
 
 		if (!empty($this->email))

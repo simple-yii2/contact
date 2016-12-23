@@ -3,17 +3,17 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-use simple\contacts\backend\assets\ContactAsset;
-use simple\contacts\backend\models\PhoneForm;
-use simple\contacts\backend\models\EmailForm;
+use cms\contact\backend\assets\ContactAsset;
+use cms\contact\backend\models\PhoneForm;
+use cms\contact\backend\models\EmailForm;
 
 use dkhlystov\widgets\AddressInput;
 
 $config = [
 	'latitudeAttribute' => 'latitude',
 	'longitudeAttribute' => 'longitude',
-	'searchLabel' => Yii::t('contacts', 'Find on map'),
-	'removeLabel' => Yii::t('contacts', 'Remove marker'),
+	'searchLabel' => Yii::t('contact', 'Find on map'),
+	'removeLabel' => Yii::t('contact', 'Remove marker'),
 ];
 
 foreach (Yii::$app->modules as $v) {
@@ -24,7 +24,7 @@ foreach (Yii::$app->modules as $v) {
 	} else {
 		$name = $v::className();
 	}
-	if ($name == 'simple\contacts\frontend\Module') {
+	if ($name == 'cms\contact\frontend\Module') {
 		if (is_array($v)) {
 			if (isset($v['mapType']))
 				$config['type'] = $v['mapType'];
@@ -53,22 +53,22 @@ foreach (Yii::$app->modules as $v) {
 
 	<?= $form->field($model, 'phones')->widget('dkhlystov\grid\ArrayInput', [
 		'itemClass' => PhoneForm::className(),
-		'columns' => ['number', 'description'],
-		'addLabel' => Yii::t('contacts', 'Add'),
-		'removeLabel' => Yii::t('contacts', 'Remove'),
+		'columns' => ['description', 'number'],
+		'addLabel' => Yii::t('contact', 'Add'),
+		'removeLabel' => Yii::t('contact', 'Remove'),
 	]) ?>
 
 	<?= $form->field($model, 'emails')->widget('dkhlystov\grid\ArrayInput', [
 		'itemClass' => EmailForm::className(),
-		'columns' => ['email', 'description'],
-		'addLabel' => Yii::t('contacts', 'Add'),
-		'removeLabel' => Yii::t('contacts', 'Remove'),
+		'columns' => ['description', 'email'],
+		'addLabel' => Yii::t('contact', 'Add'),
+		'removeLabel' => Yii::t('contact', 'Remove'),
 	]) ?>
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
-			<?= Html::submitButton(Yii::t('contacts', 'Save'), ['class' => 'btn btn-primary']) ?>
-			<?= Html::a(Yii::t('contacts', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
+			<?= Html::submitButton(Yii::t('contact', 'Save'), ['class' => 'btn btn-primary']) ?>
+			<?= Html::a(Yii::t('contact', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
 		</div>
 	</div>
 

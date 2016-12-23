@@ -8,7 +8,6 @@ $options = [
 	'class' => 'col-md-6',
 ];
 
-
 ?>
 <?php $form = ActiveForm::begin([
 	'layout' => 'horizontal',
@@ -44,7 +43,7 @@ $options = [
 
 	<div class="form-group">
 		<div class="col-sm-9">
-			<?= Html::submitButton(Yii::t('contacts', 'Send message'), ['class' => 'btn btn-default']) ?>
+			<?= Html::submitButton(Yii::t('contact', 'Send message'), ['class' => 'btn btn-default']) ?>
 		</div>
 	</div>
 

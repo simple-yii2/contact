@@ -1,6 +1,6 @@
 <?php
 
-namespace simple\contacts\backend\models;
+namespace cms\contact\backend\models;
 
 use Yii;
 use yii\base\Model;
@@ -27,8 +27,8 @@ class PhoneForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'number' => Yii::t('contacts', 'Number'),
-			'description' => Yii::t('contacts', 'Description'),
+			'number' => Yii::t('contact', 'Number'),
+			'description' => Yii::t('contact', 'Description'),
 		];
 	}
 

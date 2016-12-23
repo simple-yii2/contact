@@ -1,16 +1,26 @@
 <?php
 
-namespace simple\contacts\backend\models;
+namespace cms\contact\backend\models;
 
 use Yii;
 use yii\data\ActiveDataProvider;
 
-use simple\contacts\common\models\Contact;
+use cms\contact\common\models\Contact;
 
 /**
  * Contact search model
  */
 class ContactSearch extends Contact {
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'title' => Yii::t('contact', 'Title'),
+		];
+	}
 
 	/**
 	 * Search rules
@@ -29,7 +39,7 @@ class ContactSearch extends Contact {
 	 */
 	public function search($params) {
 		//ActiveQuery
-		$query = Contact::find();
+		$query = static::find();
 
 		$dataProvider = new ActiveDataProvider([
 			'query' => $query,

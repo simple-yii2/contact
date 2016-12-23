@@ -1,13 +1,13 @@
 <?php
 
-namespace simple\contacts\frontend\controllers;
+namespace cms\contact\frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-use simple\contacts\common\models\Contact;
-use simple\contacts\frontend\models\ContactForm;
+use cms\contact\common\models\Contact;
+use cms\contact\frontend\models\ContactForm;
 
 /**
  * Contacts frontend controller
@@ -30,7 +30,7 @@ class ContactController extends Controller
 		$model = new ContactForm;
 
 		if ($model->load(Yii::$app->getRequest()->post()) && $model->contact($this->module->mailTo)) {
-			Yii::$app->session->setFlash('success', Yii::t('contacts', 'Message send successfully.'));
+			Yii::$app->session->setFlash('success', Yii::t('contact', 'Message send successfully.'));
 			return $this->refresh();
 		}
 
