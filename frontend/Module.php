@@ -7,7 +7,8 @@ use Yii;
 /**
  * Contacts frontend module
  */
-class Module extends \yii\base\Module {
+class Module extends \yii\base\Module
+{
 
 	/**
 	 * Map types
