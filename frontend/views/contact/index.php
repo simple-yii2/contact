@@ -1,32 +1,48 @@
 <?php
 
+use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
+use yii\widgets\ListView;
+
+use cms\contact\frontend\assets\AddressesGoogleAsset;
+use cms\contact\frontend\assets\AddressesYandexAsset;
 
 $title = Yii::t('contact', 'Contacts');
 
 $this->title = $title . ' | ' . Yii::$app->name;
 
-$this->params['breadcrumbs'] = [
-	$title,
-];
+$module = Yii::$app->controller->module;
+if ($module->mapType === $module::GOOGLE) {
+	AddressesGoogleAsset::register($this);
+	$this->registerJsFile("https://maps.googleapis.com/maps/api/js?key={$module->mapKey}&callback=initContactAddressMap", [
+		'depends' => [AddressesGoogleAsset::className()],
+	]);
+} else {
+	AddressesYandexAsset::register($this);
+	$lang = str_replace('-', '_', Yii::$app->language);
+	$this->registerJsFile("https://api-maps.yandex.ru/2.1/?load=package.full&lang={$lang}", [
+		'position' => \yii\web\View::POS_HEAD,
+	]);
+}
 
-
-$isAddressesEmpty = empty($contacts);
-$isFormEmpty = !$renderForm;
+$dataProvider = new ArrayDataProvider([
+	'allModels' => $contacts,
+	'pagination' => false,
+]);
 
 ?>
 <h1><?= Html::encode($title) ?></h1>
 
 <div class="row">
-	<?php if (!$isAddressesEmpty) echo $this->render('addresses', [
-		'isFormEmpty' => $isFormEmpty,
-		'contacts' => $contacts,
-	]) ?>
+	<div class="col-md-6">
+		<?= Html::tag('div', '', ['class' => 'contact-map hidden']) ?>
+	</div>
 
-	<?php if (!$isFormEmpty) echo $this->render('form', [
-		'isAddressesEmpty' => $isAddressesEmpty,
-		'model' => $model,
-	]) ?>
+	<div class="col-md-6">
+		<?= ListView::widget([
+			'dataProvider' => $dataProvider,
+			'layout' => '{items}',
+			'itemView' => 'address',
+		]) ?>
+	</div>
 </div>
-
-

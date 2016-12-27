@@ -21,15 +21,7 @@ return [
 	'Description' => 'Описание',
 	'Address' => 'Адрес',
 	'Phones' => 'Телефоны',
-	'E-mails' => 'E-mail\'ы',
+	'E-mails' => 'E-mail',
 	'E-mail' => 'E-mail',
 	'Number' => 'Номер',
-
-	'Name' => 'Имя',
-	'Phone' => 'Телефон',
-	'Message' => 'Сообщение',
-	'Verification code' => 'Проверочный код',
-	'Send message' => 'Отправить',
-	'New message' => 'Новое сообщение',
-	'Message send successfully.' => 'Сообщение успешно отправлено.',
 ];

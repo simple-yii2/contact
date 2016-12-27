@@ -17,11 +17,6 @@ class Module extends \yii\base\Module
 	const YANDEX = 1;
 
 	/**
-	 * @var string contact form e-mail to
-	 */
-	public $mailTo;
-
-	/**
 	 * @var integer map type
 	 */
 	public $mapType = 1;
