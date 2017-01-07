@@ -51,14 +51,14 @@ foreach (Yii::$app->modules as $v) {
 
 	<?= $form->field($model, 'address')->widget(AddressInput::className(), $config) ?>
 
-	<?= $form->field($model, 'phones')->widget('dkhlystov\grid\ArrayInput', [
+	<?= $form->field($model, 'phones')->widget('dkhlystov\widgets\ArrayInput', [
 		'itemClass' => PhoneForm::className(),
 		'columns' => ['description', 'number'],
 		'addLabel' => Yii::t('contact', 'Add'),
 		'removeLabel' => Yii::t('contact', 'Remove'),
 	]) ?>
 
-	<?= $form->field($model, 'emails')->widget('dkhlystov\grid\ArrayInput', [
+	<?= $form->field($model, 'emails')->widget('dkhlystov\widgets\ArrayInput', [
 		'itemClass' => EmailForm::className(),
 		'columns' => ['description', 'email'],
 		'addLabel' => Yii::t('contact', 'Add'),
