@@ -22,6 +22,10 @@ $(function() {
 			'controls': ['zoomControl']
 		});
 
+		if ('ontouchstart' in window) {
+			map.behaviors.disable('drag');
+		};
+
 		$.each(addresses, function(i, v) {
 			var placemark = new ymaps.Placemark(v, {});
 			map.geoObjects.add(placemark);		
