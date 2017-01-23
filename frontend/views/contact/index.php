@@ -1,6 +1,5 @@
 <?php
 
-use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 
 use cms\contact\frontend\assets\AddressesGoogleAsset;
