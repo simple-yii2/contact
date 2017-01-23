@@ -4,10 +4,12 @@ namespace cms\contact\frontend;
 
 use Yii;
 
+use cms\components\BaseModule;
+
 /**
  * Contacts frontend module
  */
-class Module extends \yii\base\Module
+class Module extends BaseModule
 {
 
 	/**
@@ -29,17 +31,9 @@ class Module extends \yii\base\Module
 	/**
 	 * @inheritdoc
 	 */
-	public function init()
+	public static function moduleName()
 	{
-		parent::init();
-
-		if (!isset(Yii::$app->i18n->translations['contact'])) {
-			Yii::$app->i18n->translations['contact'] = [
-				'class' => 'yii\i18n\PhpMessageSource',
-				'sourceLanguage' => 'en-US',
-				'basePath' => dirname(__DIR__) . '/messages',
-			];
-		}
+		return 'contact';
 	}
 
 }
