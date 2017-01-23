@@ -2,7 +2,6 @@
 
 use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
-use yii\widgets\ListView;
 
 use cms\contact\frontend\assets\AddressesGoogleAsset;
 use cms\contact\frontend\assets\AddressesYandexAsset;
@@ -25,24 +24,15 @@ if ($module->mapType === $module::GOOGLE) {
 	]);
 }
 
-$dataProvider = new ArrayDataProvider([
-	'allModels' => $contacts,
-	'pagination' => false,
-]);
-
 ?>
 <h1><?= Html::encode($title) ?></h1>
 
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-sm-12">
 		<?= Html::tag('div', '', ['class' => 'contact-map hidden']) ?>
 	</div>
 
-	<div class="col-md-6">
-		<?= ListView::widget([
-			'dataProvider' => $dataProvider,
-			'layout' => '{items}',
-			'itemView' => 'address',
-		]) ?>
-	</div>
+	<?= $this->render('addresses', ['contacts' => $contacts]) ?>
+
+	<?= $this->render('feedback') ?>
 </div>
