@@ -33,6 +33,25 @@ $this->params['breadcrumbs'] = [
 			'value' => function($model, $key, $index, $column) {
 				$title = Html::encode($model->title);
 
+				if (empty($title))
+					$title = Html::encode($model->address);
+
+				if (empty($title)) {
+					$items = array_map(function($v) {
+						return $v['number'];
+					}, $model->getPhones());
+
+					$title = Html::encode(implode(', ', $items));
+				}
+
+				if (empty($title)) {
+					$items = array_map(function($v) {
+						return $v['email'];
+					}, $model->getEmails());
+
+					$title = Html::encode(implode(', ', $items));
+				}
+
 				return $title;
 			}
 		],
