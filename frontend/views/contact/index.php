@@ -9,6 +9,8 @@ $title = Yii::t('contact', 'Contacts');
 
 $this->title = $title . ' | ' . Yii::$app->name;
 
+Yii::$app->params['breadcrumbs'] = [$title];
+
 $module = Yii::$app->controller->module;
 if ($module->mapType === $module::GOOGLE) {
 	AddressesGoogleAsset::register($this);
