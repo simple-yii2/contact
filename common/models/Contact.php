@@ -2,8 +2,8 @@
 
 namespace cms\contact\common\models;
 
-use Yii;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 
 /**
  * Contact active record
@@ -27,6 +27,19 @@ class Contact extends ActiveRecord
 		parent::init();
 
 		$this->active = true;
+	}
+
+	public function behaviors()
+	{
+		return [
+			[
+				'class' => 'cms\sitemap\common\behaviors\SitemapBehavior',
+				'loc' => function($model) {
+					return Url::toRoute(['/contact/contact/index']);
+				},
+				'key' => self::className(),
+			],
+		];
 	}
 
 	/**
