@@ -26,9 +26,13 @@ class Contact extends ActiveRecord
 	{
 		parent::init();
 
-		$this->active = true;
+		if ($this->active === null)
+			$this->active = true;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function behaviors()
 	{
 		return [
