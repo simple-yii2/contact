@@ -11,87 +11,89 @@ use yii\helpers\Url;
 class Contact extends ActiveRecord
 {
 
-	/**
-	 * @inheritdoc
-	 */
-	public static function tableName()
-	{
-		return 'Contact';
-	}
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'contact';
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function init()
-	{
-		parent::init();
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
 
-		if ($this->active === null)
-			$this->active = true;
-	}
+        if ($this->active === null) {
+            $this->active = true;
+        }
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function behaviors()
-	{
-		return [
-			[
-				'class' => 'cms\sitemap\common\behaviors\SitemapBehavior',
-				'loc' => function($model) {
-					return Url::toRoute(['/contact/contact/index']);
-				},
-				'key' => self::className(),
-			],
-		];
-	}
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => 'cms\sitemap\common\behaviors\SitemapBehavior',
+                'loc' => function($model) {
+                    return Url::toRoute(['/contact/contact/index']);
+                },
+                'key' => self::className(),
+            ],
+        ];
+    }
 
-	/**
-	 * Phones getter
-	 * @return array
-	 */
-	public function getPhones()
-	{
-		$result = unserialize($this->phones);
-		
-		if (!is_array($result))
-			$result = [];
+    /**
+     * Phones getter
+     * @return array
+     */
+    public function getPhones()
+    {
+        $result = unserialize($this->phones);
+        
+        if (!is_array($result))
+            $result = [];
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
-	 * Phones setter
-	 * @param array $value 
-	 * @return void
-	 */
-	public function setPhones($value)
-	{
-		$this->phones = serialize($value);
-	}
+    /**
+     * Phones setter
+     * @param array $value 
+     * @return void
+     */
+    public function setPhones($value)
+    {
+        $this->phones = serialize($value);
+    }
 
-	/**
-	 * E-mails getter
-	 * @return array
-	 */
-	public function getEmails()
-	{
-		$result = unserialize($this->emails);
+    /**
+     * E-mails getter
+     * @return array
+     */
+    public function getEmails()
+    {
+        $result = unserialize($this->emails);
 
-		if (!is_array($result))
-			$result = [];
+        if (!is_array($result)) {
+            $result = [];
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	/**
-	 * E-mails setter
-	 * @param array $value 
-	 * @return void
-	 */
-	public function setEmails($value)
-	{
-		$this->emails = serialize($value);
-	}
+    /**
+     * E-mails setter
+     * @param array $value 
+     * @return void
+     */
+    public function setEmails($value)
+    {
+        $this->emails = serialize($value);
+    }
 
 }
